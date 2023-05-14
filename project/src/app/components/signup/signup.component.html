@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+   <meta charset="utf-8">
+   <title>Sign Up</title>
+  </head>
+  <body>
+    <div class="center">
+      <h1>Sign Up</h1>
+      <form (ngSubmit)="onSubmit()" autocomplete="new-password" [formGroup]="singupForm">
+        <div class="mess" *ngIf="this.singupForm.get('email')?.errors && this.singupForm.get('email')?.touched ">
+          <small>Ex: luanvsce@gmail.com</small>
+        </div>
+        <div class="txt_field">
+          <input type="text" required formControlName="email" >
+          <span></span>
+          <label for="Email">Email</label>
+
+        </div>
+        <div class="mess" *ngIf="this.singupForm.get('password')?.value">
+          <small > Password is incorrect</small>
+        </div>
+        <div class="txt_field">
+          <input type="password" required formControlName="password">
+          <span></span>
+          <label for="Password">Password</label>
+        </div>
+        <div class="txt_field">
+          <input type="password" required formControlName="password">
+          <span></span>
+          <label for="Password">Re-Password</label>
+        </div>
+
+        <button class="go-back-btn" type="submit" value="Sign Up">Sign Up</button>
+        <button class="go-back-btn" onclick="window.location.href='login'">Go back</button>
+
+
+
+      </form>
+    </div>
+
+  </body>
+</html>
+
