@@ -33,15 +33,15 @@
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <td>1</td>
-                <td>Vu Sy Luan</td>
-                <td>luanvs@gmail.com</td>
-                <td>0123456789</td>
-                <td>Ha Lan</td>
-                <td>23-10-2002</td>
+              <tr *ngFor="let info of infor">
+                <td>{{info.ID}}</td>
+                <td>{{info.Name}}</td>
+                <td>{{info.Email}}</td>
+                <td>{{info.Phone}}</td>
+                <td>{{info.Address}}</td>
+                <td>{{info.Birthay}}</td>
                 <td>
-                  <a class='btn btn-primary btn-sm' href="add-new"><i class="fas fa-edit"></i></a>
+                  <button class='btn btn-primary btn-sm' (click)="passUpdate(info.ID)"><i class="fas fa-edit"></i></button>
                   <a class='btn btn-danger btn-sm' href="#"><i class="fas fa-trash-alt"></i></a>
                 </td>
 
@@ -54,7 +54,7 @@
                 <td>Ha Lan</td>
                 <td>23-10-2002</td>
                 <td>
-                  <a class='btn btn-primary btn-sm' href="add-new"><i class="fas fa-edit"></i></a>
+                  <a class='btn btn-primary btn-sm' href="edit"><i class="fas fa-edit"></i></a>
                   <a class='btn btn-danger btn-sm' href="#"><i class="fas fa-trash-alt"></i></a>
                 </td>
 
@@ -67,7 +67,7 @@
                 <td>Ha Lan</td>
                 <td>23-10-2002</td>
                 <td>
-                  <a class='btn btn-primary btn-sm' href="add-new"><i class="fas fa-edit"></i></a>
+                  <a class='btn btn-primary btn-sm' href="edit"><i class="fas fa-edit"></i></a>
                   <a class='btn btn-danger btn-sm' href="#"><i class="fas fa-trash-alt"></i></a>
                 </td>
 
@@ -80,7 +80,7 @@
                 <td>Ha Lan</td>
                 <td>23-10-2002</td>
                 <td>
-                  <a class='btn btn-primary btn-sm' href="edit-student"><i class="fas fa-edit"></i></a>
+                  <a class='btn btn-primary btn-sm' href="edit"><i class="fas fa-edit"></i></a>
                   <a class='btn btn-danger btn-sm' href="#"><i class="fas fa-trash-alt"></i></a>
                 </td>
 

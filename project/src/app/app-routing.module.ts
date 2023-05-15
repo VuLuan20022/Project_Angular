@@ -19,7 +19,7 @@ const routes: Routes = [
   {path: 'forget', component : ForgetComponent},
   {path: 'student', component : StudentListComponent},
   {path: 'add-new', component : AddStudentListComponent},
-  {path: 'edit-student', component : UpdateStudentListComponent}
+  {path: 'edit', component : UpdateStudentListComponent}
 ];
 
 @NgModule({

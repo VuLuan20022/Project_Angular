@@ -2,16 +2,26 @@
 <html lang="en" dir="ltr">
   <head>
    <meta charset="utf-8">
-   <title>Student-List</title>
+   <title>Update-Student</title>
   </head>
   <body>
  <div class="container">
   <h2 class="text-center">Update Student</h2>
-  <form action="">
+  <form [formGroup]="myForm">
+
+    <div class="row mb-3">
+      <label class="col-sm-3 col-form-label">ID</label>
+      <div class="col-sm-6">
+          <input type="text" class="form-control" formControlName="ID">
+      </div>
+
+     </div>
+
+
     <div class="row mb-3">
      <label class="col-sm-3 col-form-label">Name</label>
      <div class="col-sm-6">
-         <input type="text" class="form-control" formControlName="name" >
+         <input type="text" class="form-control" formControlName="Name">
      </div>
 
     </div>
@@ -19,7 +29,7 @@
     <div class="row mb-3">
       <label class="col-sm-3 col-form-label">Email</label>
       <div class="col-sm-6">
-          <input type="email" class="form-control" formControlName="email" >
+          <input type="email" class="form-control"  formControlName="Email">
       </div>
 
      </div>
@@ -28,7 +38,7 @@
      <div class="row mb-3">
       <label class="col-sm-3 col-form-label">Phone</label>
       <div class="col-sm-6">
-          <input type="phone" class="form-control" formControlName="phone" >
+          <input type="phone" class="form-control" formControlName="Phone">
       </div>
 
      </div>
@@ -36,7 +46,7 @@
      <div class="row mb-3">
       <label class="col-sm-3 col-form-label">Address</label>
       <div class="col-sm-6">
-          <input type="text" class="form-control" formControlName="address" >
+          <input type="text" class="form-control" formControlName="Address">
       </div>
 
      </div>
@@ -44,7 +54,7 @@
      <div class="row mb-3">
       <label class="col-sm-3 col-form-label">Birthday</label>
       <div class="col-sm-6">
-          <input type="date" class="form-control" formControlName="birhtday" >
+          <input type="date" class="form-control" formControlName="Birthday">
       </div>
 
       <div class="row mb-3">
@@ -53,7 +63,6 @@
         </div>
         <div class="col-sm-3 d-grid">
           <button class="btn btn-primary" type="submit">Cancel</button>
-
         </div>
       </div>
 

@@ -4,7 +4,7 @@ body{
   margin: 0;
   padding: 0;
   font-family: montserrat;
-  background: linear-gradient(120deg,#2980b9,#8e44ad);
+  background-image: url(../../../assets/images/hinh-nen-8k-16.jpg);
   height: 100vh;
   overflow: hidden;
 
