@@ -15,11 +15,11 @@ const routes: Routes = [
 
   {path: '', component : LoginComponent},
   {path: 'login', component : LoginComponent},
-  {path: 'signup', component : SignupComponent},
+  {path: 'register', component : SignupComponent},
   {path: 'forget', component : ForgetComponent},
   {path: 'student', component : StudentListComponent},
-  {path: 'add-new', component : AddStudentListComponent},
-  {path: 'edit', component : UpdateStudentListComponent}
+  {path: 'api/student/create', component : AddStudentListComponent},
+  {path: 'student/update', component : UpdateStudentListComponent}
 ];
 
 @NgModule({

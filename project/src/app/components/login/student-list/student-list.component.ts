@@ -76,6 +76,6 @@ export class StudentListComponent {
     ]
 
     passUpdate(id: number){
-      this.route.navigate(['/edit'], {queryParams: {id}})
+      this.route.navigate(['/student/update'], {queryParams: {id}})
     }
 }

@@ -9,7 +9,7 @@ import { SignupComponent } from './components/signup/signup.component';
 import { ForgetComponent } from './components/forget/forget.component';
 import { UpdateStudentListComponent } from './components/login/student-list/update-student-list/update-student-list.component';
 import { AddStudentListComponent } from './components/login/student-list/add-student-list/add-student-list.component';
-
+import { HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
@@ -20,14 +20,15 @@ import { AddStudentListComponent } from './components/login/student-list/add-stu
     SignupComponent,
     ForgetComponent,
     UpdateStudentListComponent,
-    AddStudentListComponent,
+    AddStudentListComponent
 
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule, // xu l form
-    FormsModule // xu li form
+    FormsModule, // xu li form
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
