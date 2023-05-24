@@ -1,25 +1,3 @@
-<!-- <form (ngSubmit)="onSubmit()" autocomplete="new-password" [formGroup]="loginForm">
-   <a [routerLink]="['/product']">Product-List</a>
-  <a href="student">P</a> -->
-  <!-- có 2 cách điều hướng -->
-  <!-- <div class="form-control">
-    <label for="email">Email:</label>
-    <input autocomplete="new-password" type="email" id="email" name="email" formControlName="email">
-  </div>
-  <div *ngIf="this.loginForm.get('email')?.errors && this.loginForm.get('email')?.touched ">
-    <small color> Email is error</small>
-  </div>
-
-  <div class="form-control">
-    <label for="pass">Password:</label>
-    <input autocomplete="new-password" type="password" id="pass" name="password" formControlName="password">
-  </div>
-  <div *ngIf="this.loginForm.get('password')?.value != this.user.password && this.loginForm.get('password')?.touched">
-    <small > Password is error</small>
-  </div>
-  <button type="submit">
-    Login &#8594;
-  </button> -->
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
@@ -28,8 +6,12 @@
   </head>
   <body>
     <div class="center">
-      <h1>Login</h1>
+      <h1></h1>
+      
       <form (ngSubmit)="onSubmit()" autocomplete="new-password" [formGroup]="loginForm">
+        <div class="mess" *ngIf="this.errorMessage">
+          <small>{{this.errorMessage}}</small>
+        </div>
         <div class="mess" *ngIf="this.loginForm.get('email')?.errors && this.loginForm.get('email')?.touched ">
           <small>Ex: luanvsce@gmail.com</small>
         </div>
@@ -39,8 +21,8 @@
           <label for="Email">Email</label>
 
         </div>
-        <div class="mess" *ngIf="this.loginForm.get('password')?.value != this.user.password && this.loginForm.get('password')?.touched">
-          <small > Password is incorrect</small>
+        <div class="mess" *ngIf="this.loginForm.get('password')?.touched && !this.loginForm.get('password')?.value">
+          <small > Password is required</small>
         </div>
         <div class="txt_field">
           <input type="password" required formControlName="password">
@@ -60,5 +42,4 @@
   </body>
 </html>
 
-<!-- </form> -->
 

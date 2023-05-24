@@ -11,7 +11,7 @@ export class SignupComponent {
   constructor(private fb: FormBuilder, private router: Router) {
     // Nó cung cấp một số phương thức để tạo ra các control như FormControl, FormGroup,
     this.singupForm = this.fb.group({
-      email: ['', [Validators.required, Validators.email, Validators.pattern('[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$')]],
+      email: ['', [Validators.required, Validators.email, Validators.pattern('[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$')]],
       password: ['', [Validators.required],Validators.pattern('')]
     })
 

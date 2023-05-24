@@ -1,8 +1,12 @@
 export interface Information {
   ID: number;
-  Name: String;
-  Email: String;
-  Phone: String;
-  Address: String;
-  Birthay: String;
+  Name: string;
+  Email: string;
+  Phone: string;
+  Address: string;
+  Birthay: string;
+}
+
+export const env = {
+  path: 'http://localhost:3000/api'
 }
