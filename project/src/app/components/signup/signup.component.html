@@ -1,71 +1,95 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
-  <head>
-   <meta charset="utf-8">
-   <title>Sign Up</title>
-  </head>
-  <body>
-    <div class="center">
-      <h1>Sign Up</h1>
-      <form (ngSubmit)="onSubmit()" autocomplete="new-password" [formGroup]="singupForm">
+
+<head>
+  <meta charset="utf-8">
+  <title>Sign Up</title>
+</head>
+
+<body>
+  <div class="center">
+    <h1>Sign Up</h1>
+    <div class="mess" *ngIf="this.errorMessage">
+      <small>{{this.errorMessage}}</small>
+    </div>
+    <form (ngSubmit)="onSubmit()" autocomplete="new-password" [formGroup]="singupForm">
+      <div class="form-column">
+        <!-- Email -->
         <div class="mess" *ngIf="this.singupForm.get('email')?.errors && this.singupForm.get('email')?.touched ">
           <small>Ex: luanvsce@gmail.com</small>
         </div>
         <div class="txt_field">
-          <input type="text" required formControlName="email" >
+          <input type="text" required formControlName="email" required="">
           <span></span>
           <label for="Email">Email</label>
-
         </div>
 
-        <div class="mess" *ngIf="this.singupForm.get('password')?.value">
-          <small > Password is incorrect</small>
+        <!-- Password -->
+        <div class="mess" *ngIf="this.singupForm.get('password')?.touched&&!this.singupForm.get('password')?.value">
+          <small>Password is required</small>
         </div>
         <div class="txt_field">
-          <input type="password" required formControlName="password">
+          <input type="password" required formControlName="password" required="">
           <span></span>
           <label for="Password">Password</label>
         </div>
-        <div class="txt_field">
-          <input type="password" required formControlName="password">
-          <span></span>
-          <label for="Password">Re-Password</label>
+
+        <!-- Repassword -->
+        <div class="mess" *ngIf="this.singupForm.get('repassword')?.touched&&!this.singupForm.get('repassword')?.value">
+          <small>Repassword is required</small>
+        </div>
+        <div class="mess"
+          *ngIf="this.singupForm.get('repassword')?.touched&&this.singupForm.get('repassword')?.value&& this.singupForm.get('password')?.value !== this.singupForm.get('repassword')?.value">
+          <small>Password and Repassword does not match</small>
         </div>
         <div class="txt_field">
-          <input type="phone" required formControlName="phone">
+          <input type="password" required formControlName="repassword" required="">
+          <span></span>
+          <label for="Repassword">Re-Password</label>
+        </div>
+        <!-- name -->
+        <div class="txt_field">
+          <input type="text" required formControlName="name" required="">
+          <span></span>
+          <label for="name">Name</label>
+        </div>
+      </div>
+
+      <div class="form-column">
+        <!-- birthday -->
+        <div class="txt_field">
+          <input type="date" id="myDateInput" required formControlName="birthday" (ngModelChange)="setColor()" style="color: white;" required="">
+          <span></span>
+          <label for="birthday">Birthday</label>
+        </div>
+        <!-- address -->
+        <div class="txt_field">
+          <input type="text" required formControlName="address" required="">
+          <span></span>
+          <label for="address">Address</label>
+        </div>
+        <!-- phone -->
+        <div class="txt_field">
+          <input type="phone" required formControlName="phone" required="">
           <span></span>
           <label for="phone">Phone</label>
         </div>
+      </div>
 
-        <div class="txt_gender">Gender
-          <input type="radio" id="male" name="gender" value="male" required formControlName="gender">
-           <span></span>
-          <label for="male">Male</label>
-          <input type="radio" id="female" name="gender" value="female" required formControlName="gender">
-          <label for="female">Female</label>
-
-          </div>
-
-
-
-
-
-          <div class="txt_field">
-            <input type="text" required formControlName="address">
-            <span></span>
-            <label for="address">Address</label>
-          </div>
-
-
-
+      <!-- gender -->
+      <div class="txt_gender">Gender
+        <input type="radio" id="male" name="gender" value="male" required formControlName="gender" required="">
+        <label for="male">Male</label>
+        <input type="radio" id="female" name="gender" value="female" required formControlName="gender">
+        <label for="female">Female</label>
+      </div>
+      <div class="button-container">
         <button class="go-back-btn" type="submit" value="Sign Up">Sign Up</button>
         <button class="go-back-btn" onclick="window.location.href='login'">Go back</button>
+      </div>
+    </form>
+  </div>
+  
+</body>
 
-
-
-      </form>
-    </div>
-
-  </body>
 </html>
-

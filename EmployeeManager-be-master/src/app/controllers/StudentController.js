@@ -106,7 +106,7 @@ class StudentController {
 
       console.log('Account created successfully:', newAccount);
       console.log('Student created successfully:', newStudent);
-      return res.send('Create new student successfully!');
+      return res.json({ status: true, message: 'Create new student successfully!' });
     } catch (error) {
       console.error('Error creating student:', error);
       if (t) await t.rollback();
@@ -160,7 +160,7 @@ class StudentController {
         await t.commit(); // Commit the transaction
 
         if (resultStudent[0] === 1 || resultAccount[0] === 1) {
-          return res.send('Student updated successfully');
+          return res.json({ status: true, message: 'Student updated successfully' });
         } else {
           return res.status(500).send('No changes detected!');
         }
@@ -199,7 +199,7 @@ class StudentController {
       await t.commit(); // Commit the transaction
 
       if (resultStudent === 1 || resultAccount === 1) {
-        return res.send('Student deleted successfully');
+        return res.json({status:true,message:'Student deleted successfully'});
       } else {
         t.rollback();
         return res.status(500).send('Unable to delete student and account!!');

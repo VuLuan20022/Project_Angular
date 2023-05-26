@@ -1,10 +1,11 @@
 export interface Information {
-  ID: number;
-  Name: string;
-  Email: string;
-  Phone: string;
-  Address: string;
-  Birthay: string;
+  studentId: number;
+  name: string;
+  email: string;
+  phone: string;
+  address: string;
+  birthday: Date;
+  gender: boolean;
 }
 
 export const env = {

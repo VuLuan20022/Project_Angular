@@ -19,7 +19,7 @@ export class StudentService extends BaseService{
     }
 
     getStudent(studentId: number): Observable<HttpResponse<any>>{
-        let url = env.path + '/student?studentId='+studentId;
+        let url = env.path + '/student/get?studentId='+studentId;
         try {
             let res = this.execute_get(url);
             return res;

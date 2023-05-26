@@ -60,7 +60,8 @@ class RegisteController {
 
                 console.log('Account created successfully:', newAccount);
                 console.log('Student created successfully:', newStudent);
-                return res.send('Signup new Student Account successfully');
+                const message = 'Signup new Student Account successfully';
+                return res.json({status: true , message});
             }
 
         } catch (error) {

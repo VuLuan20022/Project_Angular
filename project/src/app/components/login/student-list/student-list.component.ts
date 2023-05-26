@@ -1,81 +1,76 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Information } from 'src/app/infor/information';
 import { Router } from '@angular/router';
-
+import { StudentService } from '../../../services/StudentService';
 @Component({
   selector: 'app-student-list',
   templateUrl: './student-list.component.html',
   styleUrls: ['./student-list.component.css']
 })
-export class StudentListComponent {
+export class StudentListComponent implements OnInit {
 
-  constructor(private route: Router){
-
+  constructor(private route: Router, private studentService: StudentService) {
   }
-    infor: Information[] = [
-      {
-        ID: 1,
-    Name: 'Vu Sy Luan',
-    Email: 'luanvs@gmail.com',
-    Phone: '0123456789',
-    Address: 'Ha Noi',
-    Birthay: '2002-02-01'
-      },
-      {
-        ID: 2,
-    Name: 'Giang Seo Ao',
-    Email: 'Aovs@gmail.com',
-    Phone: '0123456789',
-    Address: 'Ha Giang',
-    Birthay: '2002-02-01'
-      },
-      {
-        ID: 3,
-    Name: 'Hoang Quoc Anh',
-    Email: 'quocanh@gmail.com',
-    Phone: '0123456789',
-    Address: 'Bac Ninh',
-    Birthay: '2002-02-01'
-      }
-      ,
-      {
-        ID: 4,
-    Name: 'Hoang Quoc Anh',
-    Email: 'quocanh@gmail.com',
-    Phone: '0123456789',
-    Address: 'Bac Ninh',
-    Birthay: '2002-02-01'
-      }
-      ,
-      {
-        ID: 5,
-    Name: 'Hoang Quoc Anh',
-    Email: 'quocanh@gmail.com',
-    Phone: '0123456789',
-    Address: 'Bac Ninh',
-    Birthay: '2002-02-01'
-      }
-      ,
-      {
-        ID: 6,
-    Name: 'Hoang Quoc Anh',
-    Email: 'quocanh@gmail.com',
-    Phone: '0123456789',
-    Address: 'Bac Ninh',
-    Birthay: '2002-02-01'
-      }
-      ,
-      {
-        ID: 7,
-    Name: 'Hoang Quoc Anh',
-    Email: 'quocanh@gmail.com',
-    Phone: '0123456789',
-    Address: 'Bac Ninh',
-    Birthay: '2002-02-01'
-      }
-    ]
+  message: any;
+  errorMessage: any;
+  infor: Information[] = [];
 
-    passUpdate(id: number){
-      this.route.navigate(['/student/update'], {queryParams: {id}})
+  ngOnInit(): void {
+    this.studentService.getList()
+      .subscribe({
+        next: (response) => {
+          // Xử lý kết quả thành công
+          if (response.status === 200) {
+            this.infor = response.body;
+            console.log(this.infor);
+          } else {
+            // Xử lí nếu có các status khác
+            console.error('Error occurred');
+            throw new Error(response.body.error);
+          }
+        },
+        error: (error) => {
+          // Xử lý lỗi
+          console.log(error.status, 'Error occurred');
+          if (error.status === 0) {
+            this.errorMessage = 'Can not connect to server';
+          } else {
+            this.errorMessage = error.error;
+          }
+        }
+      });
+  }
+
+  passUpdate(studentId: number) {
+    this.route.navigate(['/student/update'], { queryParams: { studentId } })
+  }
+
+  passDelete(studentId: number) {
+    if(confirm('Do you want delete this student?')){
+      this.studentService.removeStudent(studentId)
+      .subscribe({
+        next: (response) => {
+          // Xử lý kết quả thành công
+          if (response.status === 200) {
+            this.message = response.body.message;
+            console.log(this.message);
+            this.ngOnInit();
+          } else {
+            // Xử lí nếu có các status khác
+            console.error('Error occurred');
+            throw new Error(response.body.error);
+          }
+        },
+        error: (error) => {
+          // Xử lý lỗi
+          console.log(error.status, 'Error occurred');
+          if (error.status === 0) {
+            this.errorMessage = 'Can not connect to server';
+          } else {
+            this.errorMessage = error.error;
+          }
+        }
+      });
     }
+  }
 }
