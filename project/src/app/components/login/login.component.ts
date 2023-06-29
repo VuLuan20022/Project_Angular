@@ -13,11 +13,10 @@ import { Observable } from 'rxjs';
 export class LoginComponent implements OnInit {
 
   loginForm: FormGroup;
+  token: string = '';
+  error: string = '';
   constructor(private fb: FormBuilder, private router: Router, private http: HttpClient) {
-    this.getData(1).subscribe((val: any) => {
-      // this.items = val.data;
-      console.log(val);
-    })
+
     // Nó cung cấp một số phương thức để tạo ra các control như FormControl, FormGroup,
     this.loginForm = this.fb.group({
       email: ['', [Validators.required, Validators.email, Validators.pattern('[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$')]],
@@ -26,22 +25,37 @@ export class LoginComponent implements OnInit {
 
   }
 
-  ngOnInit() {
+  async ngOnInit() {
   }
   user = {
     email: 'luanvsce@gmail.com',
     password: 123
   }
-  onSubmit() {
-
-    if(this.loginForm.get('email')?.value == this.user.email
-     && this.loginForm.get('password')?.value == this.user.password)  this.router.navigate(['/student']);
+  async onSubmit() {
+      await this.checkLogin();
+      console.log(this.token);
+      if(this.token != null){
+        this.router.navigate(['/student']);
+      }
+      else {
+        this.error = 'Email or password invalid!';
+      }
 
   }
   name: string = "";
 
-  getData(id: number): Observable<any>{
+  getData(): Observable<any>{
     //return list
-    return this.http.get<any>('http://localhost:8080/api/student/get?studentId='+id);
+    return this.http.get<any>('http://localhost:8080/api/login');
+  }
+
+  async checkLogin(): Promise<any>{
+    const data = {
+      email: "du@gmail.com",
+      password: "123"
+    }
+
+    const rs: any = await this.http.post('http://localhost:8080/api/login', data).toPromise();
+    this.token = rs.token;
   }
 }

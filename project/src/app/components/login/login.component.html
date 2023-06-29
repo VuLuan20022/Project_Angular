@@ -29,6 +29,7 @@
   <body>
     <div class="center">
       <h1>Login</h1>
+      
       <form (ngSubmit)="onSubmit()" autocomplete="new-password" [formGroup]="loginForm">
         <div class="mess" *ngIf="this.loginForm.get('email')?.errors && this.loginForm.get('email')?.touched ">
           <small>Ex: luanvsce@gmail.com</small>
